@@ -6,7 +6,7 @@
         <default_operation_uri/>
         <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
         <http_method>GET</http_method>
-        <name>ni_getinfo (v2)</name>
+        <name>ni_getinfo (v3)</name>
         <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
 
 // implement resource here
@@ -42,7 +42,8 @@ if(!requestUserName.user_name){
 var userNICount = new GlideAggregate('x_58872_needit_needit');
 userNICount.addAggregate('COUNT');
 userNICount.addQuery('u_requested_for',requestUserName.sys_id);
-userNICount.addEncodedQuery(requestNIQuery);
+//ここが正しく動かないのでコメントアウト
+//userNICount.addEncodedQuery(requestNIQuery);
 userNICount.groupBy('u_request_type');
 userNICount.query();
 
@@ -69,7 +70,7 @@ body.user = {"User name": requestUserName.user_name,
 response.setBody(body);
 
 })(request, response);]]></operation_script>
-        <operation_uri>/api/x_58872_needit/v2/needit_api/nigetinfo/{user_name}</operation_uri>
+        <operation_uri>/api/x_58872_needit/v3/needit_api/nigetinfo/{user_name}</operation_uri>
         <produces>application/json</produces>
         <produces_customized>false</produces_customized>
         <relative_path>/nigetinfo/{user_name}</relative_path>
@@ -80,17 +81,17 @@ response.setBody(body);
         <short_description>Find the NeedIt active NeedIt records for a user. Group by What needed.</short_description>
         <sys_class_name>sys_ws_operation</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2020-04-30 01:12:33</sys_created_on>
-        <sys_id>78317d68db6814503fd88e4748961909</sys_id>
-        <sys_mod_count>19</sys_mod_count>
-        <sys_name>ni_getinfo (v2)</sys_name>
+        <sys_created_on>2020-04-30 04:16:38</sys_created_on>
+        <sys_id>915b5aa0dbe814503fd88e47489619d8</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>ni_getinfo (v3)</sys_name>
         <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
         <sys_policy/>
         <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
-        <sys_update_name>sys_ws_operation_78317d68db6814503fd88e4748961909</sys_update_name>
+        <sys_update_name>sys_ws_operation_915b5aa0dbe814503fd88e47489619d8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-04-30 04:17:09</sys_updated_on>
+        <sys_updated_on>2020-04-30 04:17:56</sys_updated_on>
         <web_service_definition display_value="NeedIt API">dc569eabdbd490503fd88e4748961963</web_service_definition>
-        <web_service_version display_value="v2">f4317d68db6814503fd88e4748961907</web_service_version>
+        <web_service_version display_value="v3">dd5b92a0dbe814503fd88e47489619d5</web_service_version>
     </sys_ws_operation>
 </record_update>
